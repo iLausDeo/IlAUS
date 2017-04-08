@@ -1,0 +1,7 @@
+.idea/
+.DS_Store
+.sass-cache
+db.sqlite3
+
+local_settings.py
+*.pyc
