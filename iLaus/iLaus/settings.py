@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'index',
+    'ilaus_message',
     'users',
 ]
 
@@ -129,9 +130,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-CN'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+# TIME_ZONE = 'Etc/GMT-8'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -158,6 +162,8 @@ ALIYUN_SMS_OUTNET_ENDPOINT = ""
 ALIYUN_SMS_INNET_ENDPOINT = ""
 ALIYUN_SMS_VPC_ENDPOINT = ""
 ALIYUN_SMS_USE_ENDPOINT = ALIYUN_SMS_OUTNET_ENDPOINT
+
+ALIYUN_SMS_REGIONID = os.environ.get("ALIYUN_SMS_REGIONID","cn-hangzhou")
 
 
 

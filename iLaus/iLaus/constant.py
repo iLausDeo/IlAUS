@@ -24,3 +24,5 @@ class UGConst(object):
 
 const = UGConst()
 const.SUCCESS_STATUS = 9200
+const.NOTFOUND_STATUS = 9400
+const.NOTFOUND_FIELD_STATUS = 9401
