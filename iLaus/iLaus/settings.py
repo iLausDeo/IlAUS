@@ -37,10 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "users",
+    'rest_framework',
+    'index',
+    'ilaus_message',
+    'users',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -48,6 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'iLaus.urls'
@@ -90,6 +95,19 @@ DATABASES = {
     }
 }
 
+
+# Use Django's standard `django.contrib.auth` permissions,
+# or allow read-only access for unauthenticated users.
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAdminUser',
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'PAGINATE_BY': 10
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
@@ -112,9 +130,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-CN'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+# TIME_ZONE = 'Etc/GMT-8'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -131,6 +152,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # some self setting by os.environ
 
+
+
+# aliyun 账号
+ALIYUN_ACCESS_KEY_ID = os.environ.get("ALIYUN_ACCESS_KEY_ID","")
+ALIYUN_ACCESS_KEY_SECRET = os.environ.get("ALIYUN_ACCESS_KEY_SECRET","")
+# 在部署之前使用外网endpoint
+ALIYUN_SMS_OUTNET_ENDPOINT = ""
+ALIYUN_SMS_INNET_ENDPOINT = ""
+ALIYUN_SMS_VPC_ENDPOINT = ""
+ALIYUN_SMS_USE_ENDPOINT = ALIYUN_SMS_OUTNET_ENDPOINT
+
+ALIYUN_SMS_REGIONID = os.environ.get("ALIYUN_SMS_REGIONID","cn-hangzhou")
 
 
 
